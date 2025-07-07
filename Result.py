@@ -78,3 +78,22 @@ for subject in df.columns[1:7]:                                 # subject name i
             })
 top_scores_df = pd.DataFrame(top_scores,)
 print(top_scores_df.to_string(index=False))
+
+print("\n\n___________________________ lowest score______________________________________\n\n")
+min_scores = []
+for subject in df.columns[1:7]:                                 # subject name is geting stored 
+    min_score = df[subject].min()                               # min score subject stored
+    min_students = df[df[subject] == min_score]                 # seprating score where subject have lowest score as max_score
+    for _, row in min_students.iterrows():                      # interrows go through all 
+            min_scores.append({
+                "roll number" : row["roll number"],
+                "subject" : subject,
+                "score" : min_score
+            })
+            
+min_scores_df = pd.DataFrame(min_scores)
+print(min_scores_df.to_string(index=False))
+
+
+# final result csv
+df.to_csv("FINAL REPORT.csv",index=False)
