@@ -19,3 +19,11 @@ print('per/n')
 df['Percentage'] = (df['total mark'] / Total_marks) * 100
 df['Percentage'] = df['Percentage'].round(2)
 print(df)
+
+
+# adding pass and fail coloumn
+subject_cols = ["Hindi", "English", "Science", "Maths", "History", "Geograpgy"]
+
+df["Pass/Fail"] = df[subject_cols].lt(35).any(axis=1).map ({True: "Fail", False: "Pass"})
+print("\n\n__________________________________________Pass/Fail____________________________________________\n")
+print(df)
