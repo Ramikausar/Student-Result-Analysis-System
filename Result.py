@@ -12,7 +12,6 @@ print("\n\n________________________________________ Total mark _________________
 df['total mark'] = (df['Hindi'] + df["English"]+ df["Science"]+ df["Maths"]+ df["History"]+ df["Geograpgy"])
 print(df)
 
-
 # percentage 
 print("\n\n_____________________________________ Percentage ________________________________________\n")
 Total_marks = 600
