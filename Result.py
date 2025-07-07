@@ -62,3 +62,19 @@ print("\n\n___________________________ Average marks of student ________________
 subject_cols = ['Hindi', 'English', 'Science', 'Maths', 'History', 'Geograpgy'] 
 df["Average Marks"] = df[subject_cols].mean(axis=1).round(2)   # axis=1 use for row 
 print(df.to_string(index=False))
+
+print("\n\n___________________________highest score______________________________________\n\n")
+subject_cols = ["Hindi", "English", "Science", "Maths", "History", "Geograpgy"]
+ 
+top_scores = []
+for subject in df.columns[1:7]:                                 # subject name is geting stored 
+    max_score = df[subject].max()                               # max subject stored
+    top_students = df[df[subject] == max_score]                 # seprating score where subject have high score as max_score
+    for _, row in top_students.iterrows():                      # interrows go through all rows
+            top_scores.append({                                 # Adds a dictionary to the top_scores 
+                "roll number" : row["roll number"],
+                "subject" : subject,
+                "score" : max_score
+            })
+top_scores_df = pd.DataFrame(top_scores,)
+print(top_scores_df.to_string(index=False))
