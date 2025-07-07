@@ -26,3 +26,10 @@ subject_cols = ["Hindi", "English", "Science", "Maths", "History", "Geograpgy"]
 df["Pass/Fail"] = df[subject_cols].lt(35).any(axis=1).map ({True: "Fail", False: "Pass"})
 print("\n\n__________________________________________Pass/Fail____________________________________________\n")
 print(df)
+
+# csv file for failed and pass student 
+fail_student = df[df["Pass/Fail"] == "Fail"]
+pass_student = df[df["Pass/Fail"] == "Pass"]
+
+fail_student.to_csv("Fail student.csv",index=False)
+pass_student.to_csv("pass student.csv",index=False)
