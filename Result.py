@@ -10,22 +10,22 @@ print(df.head().to_string(index=False))
 print("\n\n________________________________________ Total mark ___________________________________________\n")
 
 df['total mark'] = (df['Hindi'] + df["English"]+ df["Science"]+ df["Maths"]+ df["History"]+ df["Geograpgy"])
-print(df)
+print(df.to_string(index=False))
 
 # percentage 
 print("\n\n_____________________________________ Percentage ________________________________________\n")
 Total_marks = 600
-print('per/n')
+
 df['Percentage'] = (df['total mark'] / Total_marks) * 100
 df['Percentage'] = df['Percentage'].round(2)
-print(df)
+print(df.to_string(index=False))
 
 # adding pass and fail coloumn
 subject_cols = ["Hindi", "English", "Science", "Maths", "History", "Geograpgy"]
 
 df["Pass/Fail"] = df[subject_cols].lt(35).any(axis=1).map ({True: "Fail", False: "Pass"})
 print("\n\n__________________________________________Pass/Fail____________________________________________\n")
-print(df)
+print(df.to_string(index=False))
 
 # csv file for failed and pass student 
 fail_student = df[df["Pass/Fail"] == "Fail"]
@@ -47,5 +47,18 @@ df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 50) & (df["Percentage"
 df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 40) & (df["Percentage"] < 50), "Grade"] = "C"
 df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 30) & (df["Percentage"] < 40), "Grade"] = "D"
 print("\n\n_____________________________________________GRADE_______________________________________________\n")
-print(df)
+print(df.to_string(index=False))
 
+# Average score in all subject
+print("\n\n___________________ Average subject score________________\n")
+
+subject_cols = ["Hindi", "English", "Science", "Maths", "History", "Geograpgy"]
+print(df[subject_cols].mean()) # get average mark of subjects 
+
+
+# Average marks of student
+print("\n\n___________________________ Average marks of student ______________________________________\n\n")
+
+subject_cols = ['Hindi', 'English', 'Science', 'Maths', 'History', 'Geograpgy'] 
+df["Average Marks"] = df[subject_cols].mean(axis=1).round(2)   # axis=1 use for row 
+print(df.to_string(index=False))
