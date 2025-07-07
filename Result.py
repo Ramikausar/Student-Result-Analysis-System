@@ -11,3 +11,12 @@ print("\n\n________________________________________ Total mark _________________
 
 df['total mark'] = (df['Hindi'] + df["English"]+ df["Science"]+ df["Maths"]+ df["History"]+ df["Geograpgy"])
 print(df)
+
+
+# percentage 
+print("\n\n_____________________________________ Percentage ________________________________________\n")
+Total_marks = 600
+print('per/n')
+df['Percentage'] = (df['total mark'] / Total_marks) * 100
+df['Percentage'] = df['Percentage'].round(2)
+print(df)
