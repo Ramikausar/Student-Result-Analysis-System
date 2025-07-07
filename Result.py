@@ -94,3 +94,6 @@ for subject in df.columns[1:7]:                                 # subject name i
 min_scores_df = pd.DataFrame(min_scores)
 print(min_scores_df.to_string(index=False))
 
+
+# final result csv
+df.to_csv("FINAL REPORT.csv",index=False)
