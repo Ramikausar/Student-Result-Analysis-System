@@ -33,3 +33,19 @@ pass_student = df[df["Pass/Fail"] == "Pass"]
 
 fail_student.to_csv("Fail student.csv",index=False)
 pass_student.to_csv("pass student.csv",index=False)
+
+# garde 90 A++, 80 A+, 75 A, 65 to 74 B++, 55 to 64 B+, 50 to 54 B, 40 to 50 C , 30 to 40 D
+df.loc[df["Pass/Fail"] == "Fail", "Grade"] = "F"
+
+# Now assign grades only to students who passed
+df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 90), "Grade"] = "A++"
+df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 80) & (df["Percentage"] < 90), "Grade"] = "A+"
+df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 75) & (df["Percentage"] < 80), "Grade"] = "A"
+df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 65) & (df["Percentage"] < 75), "Grade"] = "B++"
+df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 55) & (df["Percentage"] < 65), "Grade"] = "B+"
+df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 50) & (df["Percentage"] < 55), "Grade"] = "B"
+df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 40) & (df["Percentage"] < 50), "Grade"] = "C"
+df.loc[(df["Pass/Fail"] == "Pass") & (df["Percentage"] >= 30) & (df["Percentage"] < 40), "Grade"] = "D"
+print("\n\n_____________________________________________GRADE_______________________________________________\n")
+print(df)
+
